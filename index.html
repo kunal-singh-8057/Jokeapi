@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+
+        </div>
+       
+
+        <div class="m1">
+            <img src="bg.png" alt="" width="200" height="100">
+        </div>
+        <div class="h1">
+        <p id="joke">Funny jokes...</p>
+        </div>
+
+        <div class="b">
+        <button class="btn" id="btn">Get jokes</button>
+        </div>
+
+
+
+
+    </header>
+
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+
+    header
+    {
+        background-color:#FFD700;
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        background-size: cover;
+    }
+
+    .container
+    {
+        background-color: black;
+        width: 25%;
+        height: 40vh;
+        margin-left: 39%;
+        margin-top: 15%;
+        border-radius: 10px;
+        
+    }
+
+    .m1{
+        margin-left: 45%;
+        margin-top: -22%;
+    }
+
+    .h1
+    {
+        margin-left: 40% ;
+        margin-top: 2%;
+        color: white;
+        font-size: 25px;
+        width: 300px;
+        word-wrap: break-word;
+    }
+
+    .b
+    {
+        margin-left: 49%;
+        margin-top: 6%;
+    }
+
+    .btn
+    {
+        border: 2px solid white;
+        border-radius: 10px;
+        background-color: #FFD700;
+        color: white;
+        padding: 10px 20px;
+    }
+</style>
+
+<script>
+    const jokes = document.getElementById('joke');
+    const btn = document.getElementById('btn');
+    btn.addEventListener("click",myfun);
+
+    function myfun()
+    {
+        fetch('https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political')
+        .then(res=> res.json())
+        .then(data => {
+            jokes.innerHTML = data.joke;
+
+        })
+    }
+</script>
+
+</body>
+</html>
